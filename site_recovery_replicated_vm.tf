@@ -38,6 +38,10 @@ resource "azurerm_site_recovery_replicated_vm" "vm_app_replication" {
     azurerm_site_recovery_protection_container_mapping.container-mapping,
     azurerm_site_recovery_network_mapping.network-mapping,
   ]
+
+  lifecycle {
+    ignore_changes = [managed_disk, network_interface]
+  }
 }
 
 resource "azurerm_site_recovery_replicated_vm" "vm_web_replication" {
@@ -70,4 +74,8 @@ resource "azurerm_site_recovery_replicated_vm" "vm_web_replication" {
     azurerm_site_recovery_protection_container_mapping.container-mapping,
     azurerm_site_recovery_network_mapping.network-mapping,
   ]
+
+  lifecycle {
+    ignore_changes = [managed_disk, network_interface]
+  }
 }
