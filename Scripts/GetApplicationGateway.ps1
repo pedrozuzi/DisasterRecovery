@@ -1,4 +1,4 @@
-﻿$clientId = "5d378978-f472-41dc-a634-70de12d86b43"
+﻿$clientId = "cfcd1bfe-fc19-4d9d-8509-9adcd4ba4dff"
 
 try {
     Disable-AzContextAutosave -Scope Process

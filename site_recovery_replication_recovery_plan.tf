@@ -11,7 +11,7 @@ resource "azurerm_site_recovery_replication_recovery_plan" "replication_recovery
 
   boot_recovery_group {
     replicated_protected_items = [azurerm_site_recovery_replicated_vm.vm_web_replication.id,
-    azurerm_site_recovery_replicated_vm.vm_app_replication.id]
+    azurerm_site_recovery_replicated_vm.vm_db_replication.id]
 
     post_action {
       name            = "script"
