@@ -32,8 +32,33 @@ variable "rg_primary_name" {
 variable "rg_primary_location" {
   description = "Location (region) of the Azure resource group for primary region"
   type        = string
-  default     = "East US"
+  default     = "East US 2"
 }
+
+variable "rg_primary_app_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-app-primary"
+}
+
+variable "rg_primary_app_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "East US 2"
+}
+
+variable "rg_primary_db_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-db-primary"
+}
+
+variable "rg_primary_db_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "East US 2"
+}
+
 
 #Recovery Service Vault
 variable "primary_vault_name" {
@@ -109,6 +134,17 @@ variable "primary_snet_app_gateway_address_space" {
   default     = ["10.0.2.0/24"]
 }
 
+variable "primary_snet_postgre" {
+  description = "Name of primary snet_postgre"
+  type        = string
+  default     = "snet-postgre"
+}
+
+variable "primary_snet_postgre_address_space" {
+  description = "Address space of primary snet_postgre subnet"
+  type        = list(any)
+  default     = ["10.0.3.0/24"]
+}
 
 
 
@@ -179,4 +215,28 @@ variable "secondary_snet_app_gateway_address_space" {
   description = "Address space of secondary snet_app_gateway subnet"
   type        = list(any)
   default     = ["10.100.2.0/24"]
+}
+
+variable "rg_secondary_db_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-db-secondary"
+}
+
+variable "rg_secondary_db_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "Central US"
+}
+
+variable "secondary_snet_postgre" {
+  description = "Name of secondary snet_postgre"
+  type        = string
+  default     = "snet-postgre"
+}
+
+variable "secondary_snet_postgre_address_space" {
+  description = "Address space of secondary snet_postgre subnet"
+  type        = list(any)
+  default     = ["10.100.3.0/24"]
 }

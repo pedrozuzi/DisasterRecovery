@@ -7,6 +7,19 @@ resource "azurerm_site_recovery_replication_recovery_plan" "replication_recovery
   shutdown_recovery_group {}
 
   failover_recovery_group {
+
+    pre_action {
+      name            = "script"
+      type            = "AutomationRunbookActionDetails"
+      runbook_id      = azurerm_automation_runbook.runbook_app_gateway.id
+      fabric_location = "Primary"
+      fail_over_types = [
+        "TestFailover", "PlannedFailover", "UnplannedFailover"
+      ]
+      fail_over_directions = [
+        "PrimaryToRecovery", "RecoveryToPrimary"
+      ]
+    }
   }
 
   boot_recovery_group {

@@ -19,6 +19,23 @@ resource "azurerm_subnet" "primary_snet_app_gateway" {
   address_prefixes     = var.primary_snet_app_gateway_address_space
 }
 
+resource "azurerm_subnet" "primary_snet_postgre" {
+  name                 = var.primary_snet_postgre
+  resource_group_name  = azurerm_resource_group.rg_primary.name
+  virtual_network_name = azurerm_virtual_network.primary_vnet.name
+  address_prefixes     = var.primary_snet_postgre_address_space
+
+  delegation {
+    name = "delegation"
+
+    service_delegation {
+      name    = "Microsoft.DBforPostgreSQL/flexibleServers"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
+}
+
+
 
 resource "azurerm_subnet" "secondary_snet_app" {
   name                 = var.secondary_snet_app_name
@@ -39,4 +56,20 @@ resource "azurerm_subnet" "secondary_snet_app_gateway" {
   resource_group_name  = azurerm_resource_group.rg_secondary.name
   virtual_network_name = azurerm_virtual_network.secondary_vnet.name
   address_prefixes     = var.secondary_snet_app_gateway_address_space
+}
+
+resource "azurerm_subnet" "secondary_snet_postgre" {
+  name                 = var.secondary_snet_postgre
+  resource_group_name  = azurerm_resource_group.rg_secondary.name
+  virtual_network_name = azurerm_virtual_network.secondary_vnet.name
+  address_prefixes     = var.secondary_snet_postgre_address_space
+
+  delegation {
+    name = "delegation"
+
+    service_delegation {
+      name    = "Microsoft.DBforPostgreSQL/flexibleServers"
+      actions = ["Microsoft.Network/virtualNetworks/subnets/join/action"]
+    }
+  }
 }
