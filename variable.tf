@@ -20,6 +20,7 @@ variable "admin_password" {
   default     = "P@ssWord!!$4"
 }
 
+
 #####Primary region#######
 
 #Resource Group
@@ -29,11 +30,27 @@ variable "rg_primary_name" {
   default     = "rg-primary"
 }
 
+
 variable "rg_primary_location" {
   description = "Location (region) of the Azure resource group for primary region"
   type        = string
   default     = "East US 2"
 }
+
+variable "rg_images_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-images"
+}
+
+
+variable "rg_images_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "East US 2"
+}
+
+
 
 variable "rg_primary_app_name" {
   description = "Name of the Azure resource group"
@@ -54,6 +71,18 @@ variable "rg_primary_db_name" {
 }
 
 variable "rg_primary_db_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "East US 2"
+}
+
+variable "rg_primary_web_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-web-primary"
+}
+
+variable "rg_primary_web_location" {
   description = "Location (region) of the Azure resource group for primary region"
   type        = string
   default     = "East US 2"
@@ -224,6 +253,30 @@ variable "rg_secondary_db_name" {
 }
 
 variable "rg_secondary_db_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "Central US"
+}
+
+variable "rg_secondary_app_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-app-secondary"
+}
+
+variable "rg_secondary_app_location" {
+  description = "Location (region) of the Azure resource group for primary region"
+  type        = string
+  default     = "Central US"
+}
+
+variable "rg_secondary_web_name" {
+  description = "Name of the Azure resource group"
+  type        = string
+  default     = "rg-web-secondary"
+}
+
+variable "rg_secondary_web_location" {
   description = "Location (region) of the Azure resource group for primary region"
   type        = string
   default     = "Central US"
