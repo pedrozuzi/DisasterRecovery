@@ -119,18 +119,18 @@
 # }
 
 module "vm_app" {
-  source                  = "../../Terraform/DisasterRecovery/modules/terraform-azurerm-windows-vm"
+  source                  = "../../DisasterRecovery/prod/modules/terraform-azurerm-windows-vm"
   resource_group_name     = azurerm_resource_group.rg_primary_app.name
   region                  = azurerm_resource_group.rg_primary_app.location
   subnet_id               = azurerm_subnet.primary_snet_app.id
   nsg_id                  = azurerm_network_security_group.primary_nsg.id
   hostname                = var.primary_vm_app_name
-  managed_disk_sizes      = [ "128", "120" ]
+  managed_disk_sizes      = ["20", "40"]
   vm_count                = 1
   vm_size                 = "Standard_B2ms"
   vm_image_id             = "/subscriptions/d0eff89d-ff78-4c52-be45-e46370c50d94/resourceGroups/rg-images/providers/Microsoft.Compute/galleries/win2019/images/image-definition-standard/versions/0.0.1"
   vm_storage_os_disk_type = "Standard_LRS"
-  vm_storage_os_disk_size = "128"
+  #  vm_storage_os_disk_size = "40"
   vm_timezone             = "Eastern Standard Time"
   tag_environment_type    = "test"
   tag_maintenance_window  = ["test"]

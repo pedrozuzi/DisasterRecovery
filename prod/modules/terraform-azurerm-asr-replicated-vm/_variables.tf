@@ -40,11 +40,11 @@ variable "post_action_type" {
   default     = "AutomationRunbookActionDetails"
 }
 
-variable "runbook_id" {
-  description = "The ID of the automation runbook to execute as a post-action."
-  type        = string
-  #default     = azurerm_automation_runbook.runbook_app_gateway.id
-}
+# variable "runbook_id" {
+#   description = "The ID of the automation runbook to execute as a post-action."
+#   type        = string
+#   #default     = azurerm_automation_runbook.runbook_app_gateway.id
+# }
 
 variable "fabric_location" {
   description = "The location of the fabric, typically 'Primary'."

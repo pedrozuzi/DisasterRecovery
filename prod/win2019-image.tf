@@ -1,25 +1,25 @@
 # generate a random string (consisting of four characters)
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string
-resource "random_string" "rando" {
-  length  = 4
-  upper   = false
-  special = false
-}
+# resource "random_string" "rando" {
+#   length  = 4
+#   upper   = false
+#   special = false
+# }
 
 
-# Creates Shared Image Gallery
-# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image_gallery
-resource "azurerm_shared_image_gallery" "sig" {
-  name                = "win2019"
-  resource_group_name = azurerm_resource_group.rg_images.name
-  location            = azurerm_resource_group.rg_images.location
-  description         = "Shared images"
+# # Creates Shared Image Gallery
+# # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image_gallery
+# resource "azurerm_shared_image_gallery" "sig" {
+#   name                = "win2019"
+#   resource_group_name = azurerm_resource_group.rg_images.name
+#   location            = azurerm_resource_group.rg_images.location
+#   description         = "Shared images"
 
-  tags = {
-    Environment = "Demo"
-    Tech        = "Terraform"
-  }
-}
+#   tags = {
+#     Environment = "Demo"
+#     Tech        = "Terraform"
+#   }
+# }
 
 #Creates image definition
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/shared_image

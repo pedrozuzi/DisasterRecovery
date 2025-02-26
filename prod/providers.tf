@@ -22,3 +22,14 @@ provider "azurerm" {
   client_secret   = var.arm_client_secret
   tenant_id       = var.arm_tenant_id
 }
+
+data "terraform_remote_state" "dr" {
+  backend = "azurerm"
+
+  config = {
+    resource_group_name  = "rg-terraform"
+    storage_account_name = "zuziterraformsate"
+    container_name       = "disasterrecovery"
+    key = "terraform.tfstateenv:dr"
+  }
+}

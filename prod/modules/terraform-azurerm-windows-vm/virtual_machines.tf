@@ -35,6 +35,7 @@ resource "azurerm_windows_virtual_machine" "windows" {
     name                 = format("osdisk-%s%d", (var.hostname != "" ? var.hostname : random_string.dynamic_hostname.result), count.index + 1 + var.hostname_count_split)
     caching              = var.vm_storage_os_disk_caching
     storage_account_type = var.vm_storage_os_disk_type
+    disk_size_gb         = var.vm_storage_os_disk_size
   }
 
   identity {
