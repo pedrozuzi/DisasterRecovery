@@ -119,7 +119,7 @@
 # }
 
 module "vm_app" {
-  source                  = "../../DisasterRecovery/prod/modules/terraform-azurerm-windows-vm"
+  source                  = "../../DisasterRecovery/modules/terraform-azurerm-windows-vm"
   resource_group_name     = azurerm_resource_group.rg_primary_app.name
   region                  = azurerm_resource_group.rg_primary_app.location
   subnet_id               = azurerm_subnet.primary_snet_app.id

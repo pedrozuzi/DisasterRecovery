@@ -122,7 +122,7 @@
 # }
 
 module "replication_vm_app" {
-  source                                 = "../../DisasterRecovery/prod/modules/terraform-azurerm-asr-replicated-vm"
+  source                                 = "../../DisasterRecovery/modules/terraform-azurerm-asr-replicated-vm"
   managed_disk_target_replica_disk_types = data.terraform_remote_state.prod.outputs.vm_app_managed_disk_types
   resource_group_name                    = azurerm_recovery_services_vault.secondary_vault.resource_group_name
   target_availability_set_id             = azurerm_availability_set.secondary_availability_set_vm_app.id
