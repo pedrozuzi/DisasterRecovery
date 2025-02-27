@@ -125,8 +125,8 @@ module "vm_app" {
   subnet_id               = azurerm_subnet.primary_snet_app.id
   nsg_id                  = azurerm_network_security_group.primary_nsg.id
   hostname                = var.primary_vm_app_name
-  managed_disk_sizes      = ["20", "40"]
-  vm_count                = 1
+  managed_disk_sizes      = ["20"]
+  vm_count                = 2
   vm_size                 = "Standard_B2ms"
   vm_image_id             = "/subscriptions/d0eff89d-ff78-4c52-be45-e46370c50d94/resourceGroups/rg-images/providers/Microsoft.Compute/galleries/win2019/images/image-definition-standard/versions/0.0.1"
   vm_storage_os_disk_type = "Standard_LRS"

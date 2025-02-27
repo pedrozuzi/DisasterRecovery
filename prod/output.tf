@@ -36,6 +36,9 @@ output "vm_app_vm_names" {
 }
 
 
+output "vm_app_disks_info" {
+  value = module.vm_app.vm_disks_info
+}
 
 # output "vm_names" {
 #   description = "Concatenated names of all Web and App VMs"
@@ -47,8 +50,8 @@ output "vm_app_vm_names" {
 #   value       = join(", ", concat(module.vm_web[*].vm_managed_disk_type, module.vm_app[*].vm_managed_disk_type))
 # }
 
-# output "vm_managed_disk_ids" {
-#   value = concat(module.vm_web[*].vm_managed_disk_id, module.vm_app[*].vm_managed_disk_id)
+# output "concat_vm_app_managed_disk_ids" {
+#   value = concat(module.vm_app[*].vm_managed_disk_ids)
 # }
 
 # output "vm_ids" {
@@ -62,3 +65,4 @@ output "vm_app_vm_names" {
 # output "vm_os_disk_ids" {
 #   value = concat(module.vm_web[*].vm_os_disk_id, module.vm_app[*].vm_os_disk_id)
 # }
+

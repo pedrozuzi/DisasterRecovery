@@ -62,3 +62,19 @@ output "managed_disk_types" {
   description = "List of managed disk types for the VMs."
   value       = azurerm_managed_disk.server_managed_disk[*].storage_account_type
 }
+
+output "vm_disks_info" {
+  value = [
+    for idx, vm in azurerm_windows_virtual_machine.windows : {
+      vm_name    = vm.name
+      os_disk_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${var.resource_group_name}/providers/Microsoft.Compute/disks/${vm.os_disk[0].name}"
+      data_disk_ids = [
+        for disk in azurerm_managed_disk.server_managed_disk :
+        disk.id if startswith(disk.name, "${vm.name}-disk-")
+      ]
+    }
+  ]
+}
+
+
+

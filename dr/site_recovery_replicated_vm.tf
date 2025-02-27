@@ -145,7 +145,7 @@ module "replication_vm_app" {
   os_disk_ids                            = data.terraform_remote_state.prod.outputs.vm_app_os_disk_ids
   cache_storage_account_id               = data.terraform_remote_state.prod.outputs.cache_storage_account_id
   tag_support_group                      = "test"
-  #runbook_id                             = azurerm_automation_runbook.runbook_app_gateway.id
-  tag_app_group_email = "test"
-  vm_names            = data.terraform_remote_state.prod.outputs.vm_app_vm_names
+  tag_app_group_email                    = "test"
+  vm_names                               = data.terraform_remote_state.prod.outputs.vm_app_vm_names
+  vm_disks_info                          = data.terraform_remote_state.prod.outputs.vm_app_disks_info
 }

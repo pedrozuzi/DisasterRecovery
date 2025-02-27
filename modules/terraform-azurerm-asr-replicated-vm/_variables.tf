@@ -169,3 +169,12 @@ variable "secondary_protection_container_id" {
   description = "ID of the secondary protection container."
   type        = string
 }
+
+variable "vm_disks_info" {
+  type = list(object({
+    vm_name       = string
+    os_disk_id    = string
+    data_disk_ids = list(string)
+  }))
+  description = "List of VM disk information, including OS and data disk IDs"
+}

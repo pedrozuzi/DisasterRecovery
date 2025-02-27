@@ -26,3 +26,6 @@ locals {
     SLA            = var.tag_sla
   }
 }
+
+
+data "azurerm_client_config" "current" {}
