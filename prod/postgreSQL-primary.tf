@@ -32,13 +32,13 @@ resource "azurerm_postgresql_flexible_server" "primary_flexdb" {
   }
 }
 
-# resource "azurerm_postgresql_flexible_server_virtual_endpoint" "primary_flexdb_vep" {
-#   name              = "flexdbvep"
-#   source_server_id  = azurerm_postgresql_flexible_server.primary_flexdb.id
-#   replica_server_id = azurerm_postgresql_flexible_server.secondary_flexdb.id
-#   type              = "ReadWrite"
+resource "azurerm_postgresql_flexible_server_virtual_endpoint" "primary_flexdb_vep" {
+  name              = "flexdbvep"
+  source_server_id  = azurerm_postgresql_flexible_server.primary_flexdb.id
+  replica_server_id = data.terraform_remote_state.dr.outputs.secondary_postgresql_id
+  type              = "ReadWrite"
 
-#   timeouts {
-#     create = "60m"
-#   }
-# }
+  timeouts {
+    create = "60m"
+  }
+}

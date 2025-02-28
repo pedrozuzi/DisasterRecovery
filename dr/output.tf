@@ -3,10 +3,37 @@ output "secondary_vnet_id" {
   value = azurerm_virtual_network.secondary_vnet.id
 }
 
-output "vm_app_asr_replicated_vm_ids" {
-  description = "List of IDs for the replicated VMs."
-  value       = module.replication_vm_app.asr_replicated_vm_ids
+#### secondary PostgreSQL #####
+output "secondary_postgresql_id" {
+  value = azurerm_postgresql_flexible_server.secondary_flexdb.id
 }
+
+output "secondary_postgresql_name" {
+  value = azurerm_postgresql_flexible_server.secondary_flexdb.name
+}
+
+output "secondary_postgresql_resource_group_name" {
+  value = azurerm_postgresql_flexible_server.secondary_flexdb.resource_group_name
+}
+
+
+#### secondary gateway #####
+output "secondary_app_gateway_id" {
+  value = azurerm_application_gateway.secondary_appgw.id
+}
+
+output "secondary_app_gateway_name" {
+  value = azurerm_application_gateway.secondary_appgw.name
+}
+
+output "secondary_app_gateway_resource_group_name" {
+  value = azurerm_application_gateway.secondary_appgw.resource_group_name
+}
+
+# output "vm_app_asr_replicated_vm_ids" {
+#   description = "List of IDs for the replicated VMs."
+#   value       = module.replication_vm_app.asr_replicated_vm_ids
+# }
 
 # output "vm_names" {
 #   description = "Concatenated names of all Web and App VMs"

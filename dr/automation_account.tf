@@ -51,3 +51,32 @@ resource "azurerm_automation_variable_string" "appgw_rg_name_stop" {
   automation_account_name = azurerm_automation_account.automatin_account.name
   value                   = data.terraform_remote_state.prod.outputs.primary_app_gateway_resource_group_name
 }
+
+
+resource "azurerm_automation_variable_string" "postgre_name_start" {
+  name                    = "postgre_name_start"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = data.terraform_remote_state.prod.outputs.primary_postgresql_name
+}
+
+resource "azurerm_automation_variable_string" "postgre_rg_name_start" {
+  name                    = "postgre_rg_name_start"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = data.terraform_remote_state.prod.outputs.primary_postgresql_resource_group_name
+}
+
+resource "azurerm_automation_variable_string" "postgre_name_stop" {
+  name                    = "postgre_name_stop"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = azurerm_postgresql_flexible_server.secondary_flexdb.name
+}
+
+resource "azurerm_automation_variable_string" "postgre_rg_name_stop" {
+  name                    = "postgre_rg_name_stop"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = azurerm_postgresql_flexible_server.secondary_flexdb.resource_group_name
+}

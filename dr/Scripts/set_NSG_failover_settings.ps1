@@ -1,4 +1,4 @@
-Connect-AzAccount
+#Connect-AzAccount
 
 #variables
 $drNSGName = "secondary_nsg"
@@ -29,7 +29,7 @@ if ($drNSG){
         
             $nics = @($nic1)
             $job = Set-AzRecoveryServicesAsrReplicationProtectedItem -InputObject $item -ASRVMNicConfiguration $nics
-            sleep 7
+            sleep 10
             Write-Host "($($item.FriendlyName)) : " -NoNewline
             Write-Host (Get-AzRecoveryServicesAsrJob -Job $job).State
 

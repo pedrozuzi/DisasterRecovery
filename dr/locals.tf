@@ -6,6 +6,10 @@ data "local_file" "failback_script" {
   filename = "C:/Users/usradmin/Documents/Files/Terraform/DisasterRecovery/dr/Scripts/Failback.ps1"
 }
 
+data "local_file" "postgresql_script" {
+  filename = "C:/Users/usradmin/Documents/Files/Terraform/DisasterRecovery/dr/Scripts/postgreSQL_failover_failback.ps1"
+}
+
 /* locals {
   input = file(data.local_file.app_gateway_script.filename)
 

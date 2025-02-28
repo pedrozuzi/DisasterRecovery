@@ -7,8 +7,21 @@ output "cache_storage_account_id" {
   value = azurerm_storage_account.primary_storage_account.id
 }
 
+#### primary PostgreSQL #####
+output "primary_postgresql_id" {
+  value = azurerm_postgresql_flexible_server.primary_flexdb.id
+}
 
-#### vm app #####
+output "primary_postgresql_name" {
+  value = azurerm_postgresql_flexible_server.primary_flexdb.name
+}
+
+output "primary_postgresql_resource_group_name" {
+  value = azurerm_postgresql_flexible_server.primary_flexdb.resource_group_name
+}
+
+
+#### primary gateway #####
 output "primary_app_gateway_id" {
   value = azurerm_application_gateway.primary_appgw.id
 }
