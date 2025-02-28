@@ -3,6 +3,10 @@ output "secondary_vnet_id" {
   value = azurerm_virtual_network.secondary_vnet.id
 }
 
+output "vm_app_asr_replicated_vm_ids" {
+  description = "List of IDs for the replicated VMs."
+  value       = module.replication_vm_app.asr_replicated_vm_ids
+}
 
 # output "vm_names" {
 #   description = "Concatenated names of all Web and App VMs"

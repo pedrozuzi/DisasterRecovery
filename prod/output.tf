@@ -7,6 +7,23 @@ output "cache_storage_account_id" {
   value = azurerm_storage_account.primary_storage_account.id
 }
 
+
+#### vm app #####
+output "primary_app_gateway_id" {
+  value = azurerm_application_gateway.primary_appgw.id
+}
+
+output "primary_app_gateway_name" {
+  value = azurerm_application_gateway.primary_appgw.name
+}
+
+output "primary_app_gateway_resource_group_name" {
+  value = azurerm_application_gateway.primary_appgw.resource_group_name
+}
+
+
+
+#### vm app #####
 output "vm_app_ids" {
   value = module.vm_app.vm_ids
 }
@@ -35,34 +52,41 @@ output "vm_app_vm_names" {
   value = module.vm_app.vm_names
 }
 
-
 output "vm_app_disks_info" {
   value = module.vm_app.vm_disks_info
 }
 
-# output "vm_names" {
-#   description = "Concatenated names of all Web and App VMs"
-#   value       = join(", ", concat(module.vm_web[*].vm_name, module.vm_app[*].vm_name))
-# }
 
-# output "vm_managed_disk_types" {
-#   description = "Concatenated managed disk types of all Web and App VMs"
-#   value       = join(", ", concat(module.vm_web[*].vm_managed_disk_type, module.vm_app[*].vm_managed_disk_type))
-# }
 
-# output "concat_vm_app_managed_disk_ids" {
-#   value = concat(module.vm_app[*].vm_managed_disk_ids)
-# }
+#### vm web #####
+output "vm_web_ids" {
+  value = module.vm_web.vm_ids
+}
 
-# output "vm_ids" {
-#   value = concat(module.vm_web[*].vm_id, module.vm_app[*].vm_id)
-# }
+output "vm_web_vm_ids" {
+  value = module.vm_web.vm_ids
+}
 
-# output "vm_nic_ids" {
-#   value = concat(module.vm_web[*].vm_nic_id, module.vm_app[*].vm_nic_id)
-# }
+output "vm_web_managed_disk_ids" {
+  value = module.vm_web.managed_disk_ids
+}
 
-# output "vm_os_disk_ids" {
-#   value = concat(module.vm_web[*].vm_os_disk_id, module.vm_app[*].vm_os_disk_id)
-# }
+output "vm_web_managed_disk_types" {
+  value = module.vm_web.managed_disk_types
+}
 
+output "vm_web_nic_ids" {
+  value = module.vm_web.nic_ids
+}
+
+output "vm_web_os_disk_ids" {
+  value = module.vm_web.os_disk_ids
+}
+
+output "vm_web_vm_names" {
+  value = module.vm_web.vm_names
+}
+
+output "vm_web_disks_info" {
+  value = module.vm_web.vm_disks_info
+}

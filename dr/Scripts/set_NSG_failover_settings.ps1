@@ -1,4 +1,4 @@
-#Connect-AzAccount
+Connect-AzAccount
 
 #variables
 $drNSGName = "secondary_nsg"

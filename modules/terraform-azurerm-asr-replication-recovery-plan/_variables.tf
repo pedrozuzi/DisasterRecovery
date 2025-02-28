@@ -30,7 +30,7 @@ variable "replicated_protected_items" {
   type        = list(string)
 }
 
-variable "pre_actions" {
+variable "failover_pre_actions" {
   description = "List of pre-actions to be executed."
   type = list(object({
     name                 = string
@@ -43,7 +43,33 @@ variable "pre_actions" {
   default = []
 }
 
-variable "post_actions" {
+variable "failover_post_actions" {
+  description = "List of post-actions to be executed."
+  type = list(object({
+    name                 = string
+    type                 = string
+    runbook_id           = string
+    fabric_location      = string
+    fail_over_types      = list(string) // ["TestFailover", "PlannedFailover", "UnplannedFailover"]
+    fail_over_directions = list(string) // e.g. ["PrimaryToRecovery", "RecoveryToPrimary"]
+  }))
+  default = []
+}
+
+variable "boot_pre_actions" {
+  description = "List of pre-actions to be executed."
+  type = list(object({
+    name                 = string
+    type                 = string
+    runbook_id           = string
+    fabric_location      = string
+    fail_over_types      = list(string) // ["TestFailover", "PlannedFailover", "UnplannedFailover"]
+    fail_over_directions = list(string) // e.g. ["PrimaryToRecovery", "RecoveryToPrimary"]
+  }))
+  default = []
+}
+
+variable "boot_post_actions" {
   description = "List of post-actions to be executed."
   type = list(object({
     name                 = string
