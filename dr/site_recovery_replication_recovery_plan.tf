@@ -23,8 +23,17 @@ module "recovery_plan" {
       fabric_location      = "Primary"
       fail_over_types      = ["PlannedFailover", "UnplannedFailover"]
       fail_over_directions = ["PrimaryToRecovery", "RecoveryToPrimary"]
+    },
+    {
+      name                 = "SQLFailover"
+      type                 = "AutomationRunbookActionDetails"
+      runbook_id           = azurerm_automation_runbook.runbook_sql.id
+      fabric_location      = "Primary"
+      fail_over_types      = ["PlannedFailover", "UnplannedFailover"]
+      fail_over_directions = ["PrimaryToRecovery", "RecoveryToPrimary"]
     }
   ]
+  
 
   boot_post_actions = [
     {

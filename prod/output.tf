@@ -103,3 +103,19 @@ output "vm_web_vm_names" {
 output "vm_web_disks_info" {
   value = module.vm_web.vm_disks_info
 }
+
+
+
+
+#### primary mssql #####
+output "primary_mssql_server_resource_group_name" {
+  value = azurerm_mssql_server.sql_server_primary.resource_group_name
+}
+
+output "primary_mssql_server_name" {
+  value = azurerm_mssql_server.sql_server_primary.name
+}
+
+output "primary_mssql_server_id" {
+  value = azurerm_mssql_server.sql_server_primary.id
+}

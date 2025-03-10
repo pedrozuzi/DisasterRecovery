@@ -30,6 +30,20 @@ output "secondary_app_gateway_resource_group_name" {
   value = azurerm_application_gateway.secondary_appgw.resource_group_name
 }
 
+#### secondary mssql #####
+output "secondary_mssql_server_resource_group_name" {
+  value = azurerm_mssql_server.sql_server_secondary.resource_group_name
+}
+
+output "secondary_mssql_server_name" {
+  value = azurerm_mssql_server.sql_server_secondary.name
+}
+
+output "secondary_mssql_server_id" {
+  value = azurerm_mssql_server.sql_server_secondary.id
+}
+
+
 # output "vm_app_asr_replicated_vm_ids" {
 #   description = "List of IDs for the replicated VMs."
 #   value       = module.replication_vm_app.asr_replicated_vm_ids

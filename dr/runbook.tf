@@ -23,3 +23,16 @@ resource "azurerm_automation_runbook" "runbook_postgresql" {
 
   content = data.local_file.postgresql_script.content
 }
+
+resource "azurerm_automation_runbook" "runbook_sql" {
+  name                    = "sql_db_failover"
+  location                = azurerm_resource_group.rg_secondary.location
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  log_verbose             = "true"
+  log_progress            = "true"
+  description             = "sql_db_failover"
+  runbook_type            = "PowerShell"
+
+  content = data.local_file.sql_db_script.content
+}

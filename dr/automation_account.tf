@@ -80,3 +80,25 @@ resource "azurerm_automation_variable_string" "postgre_rg_name_stop" {
   automation_account_name = azurerm_automation_account.automatin_account.name
   value                   = azurerm_postgresql_flexible_server.secondary_flexdb.resource_group_name
 }
+
+
+resource "azurerm_automation_variable_string" "sql_db_failover_subscription_id" {
+  name                    = "sql_db_failover_subscription_id"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = data.azurerm_subscription.primary.subscription_id
+}
+
+resource "azurerm_automation_variable_string" "sql_server_name" {
+  name                    = "sql_server_name"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = data.terraform_remote_state.prod.outputs.primary_mssql_server_name
+}
+
+resource "azurerm_automation_variable_string" "sql_server_rg_name" {
+  name                    = "sql_server_rg_name"
+  resource_group_name     = azurerm_resource_group.rg_secondary.name
+  automation_account_name = azurerm_automation_account.automatin_account.name
+  value                   = data.terraform_remote_state.prod.outputs.primary_mssql_server_resource_group_name
+}
