@@ -63,11 +63,13 @@ output "managed_disk_types" {
   value       = azurerm_managed_disk.server_managed_disk[*].storage_account_type
 }
 
+
+#New Ouputs
 output "vm_disks_info" {
   value = [
     for idx, vm in azurerm_windows_virtual_machine.windows : {
       vm_name    = vm.name
-      os_disk_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/${var.resource_group_name}/providers/Microsoft.Compute/disks/${vm.os_disk[0].name}"
+      os_disk_id = vm.os_disk[0].id
       data_disk_ids = [
         for disk in azurerm_managed_disk.server_managed_disk :
         disk.id if startswith(disk.name, "${vm.name}-disk-")
@@ -76,5 +78,36 @@ output "vm_disks_info" {
   ]
 }
 
+output "vm_resource_group_name" {
+  description = "Resource group name where VMs are deployed"
+  value       = azurerm_windows_virtual_machine.windows[0].resource_group_name
+}
 
+output "vm_location" {
+  description = "Location of the VMs"
+  value       = azurerm_windows_virtual_machine.windows[0].location
+}
 
+# output "vm_os_disk_ids" {
+#   description = "List of OS disk IDs for the VMs"
+#   value       = azurerm_managed_disk.os_disks[*].id
+# }
+
+# output "vm_data_disk_ids" {
+#   description = "List of data disk IDs for the VMs"
+#   value       = flatten([
+#     for vm in azurerm_windows_virtual_machine.windows : [
+#       for disk in vm.storage_data_disk : disk.managed_disk_id
+#     ]
+#   ])
+# }
+
+output "vm_availability_set_id" {
+  description = "Availability Set ID (if used)"
+  value       = azurerm_windows_virtual_machine.windows[0].availability_set_id
+}
+
+output "vm_zones" {
+  description = "Availability zones of the VMs"
+  value       = azurerm_windows_virtual_machine.windows[*].zone
+}

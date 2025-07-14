@@ -351,3 +351,8 @@ variable "enable_beyondtrust_service" {
   default     = true
 }
 
+variable "init_disk_enable" {
+  description = "**OPTIONAL**: Should InitDiskExtension to new disk"
+  type        = bool
+  default     = true
+}

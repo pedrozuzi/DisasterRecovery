@@ -5,9 +5,9 @@ resource "azurerm_virtual_network" "secondary_vnet" {
   address_space       = var.secondary_vnet_address_space
 }
 
-resource "azurerm_virtual_network_peering" "secondary_vnet_to_primary_vnet" {
-  name                      = "secondary_vnet_to_primary_vnet"
-  resource_group_name       = azurerm_resource_group.rg_secondary.name
-  virtual_network_name      = azurerm_virtual_network.secondary_vnet.name
-  remote_virtual_network_id = data.terraform_remote_state.prod.outputs.primary_vnet_id
-}
+# resource "azurerm_virtual_network_peering" "secondary_vnet_to_primary_vnet" {
+#   name                      = "secondary_vnet_to_primary_vnet"
+#   resource_group_name       = azurerm_resource_group.rg_secondary.name
+#   virtual_network_name      = azurerm_virtual_network.secondary_vnet.name
+#   remote_virtual_network_id = data.terraform_remote_state.prod.outputs.primary_vnet_id
+# }

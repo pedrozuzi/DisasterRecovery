@@ -145,3 +145,33 @@ resource "azurerm_virtual_machine_extension" "windows_vm" {
 
   tags = merge(local.default_tags)
 }
+
+resource "azurerm_virtual_machine_extension" "init_disk" {
+  count                = lower(var.init_disk_enable) == "true" ? var.vm_count : 0
+  name                 = "init_disk-${substr(md5(time_static.init_disk_trigger.id), 0, 6)}"
+  virtual_machine_id   = azurerm_windows_virtual_machine.windows[count.index].id
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.10"
+
+  settings = <<SETTINGS
+            {
+              "commandToExecute": "powershell -ExecutionPolicy Unrestricted -Command \"Get-Disk | Where-Object PartitionStyle -Eq 'RAW' | Initialize-Disk -PartitionStyle MBR -PassThru | New-Partition -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS -Force\""
+            }
+            SETTINGS
+
+  depends_on = [
+    azurerm_virtual_machine_data_disk_attachment.server_managed_disk_attachment
+  ]
+
+  lifecycle {
+    ignore_changes = [settings]
+  }
+}
+
+resource "time_static" "init_disk_trigger" {
+  triggers = {
+    disk_ids = join(",", azurerm_virtual_machine_data_disk_attachment.server_managed_disk_attachment[*].managed_disk_id)
+  }
+}
+
